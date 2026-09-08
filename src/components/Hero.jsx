@@ -145,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-ink border border-inkline px-3 py-2 font-mono text-[10px] text-wire shadow-lg sm:px-4 sm:text-[11px]"
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-ink border border-inkline px-3 py-2 font-mono text-[10px] text-wire shadow-lg sm:-bottom-4 sm:px-4 sm:text-[11px]"
           >
             SLIIT · IT Undergraduate
           </motion.span>
