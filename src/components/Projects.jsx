@@ -24,11 +24,11 @@ export default function Projects() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                className="w-full flex items-center justify-between gap-6 py-6 text-left group focus-ring rounded"
+                className="w-full min-w-0 flex items-center justify-between gap-4 py-6 text-left group focus-ring rounded sm:gap-6"
               >
-                <div className="flex items-baseline gap-4 sm:gap-8">
+                <div className="min-w-0 flex items-baseline gap-4 sm:gap-8">
                   <span className="font-mono text-xs text-muted hidden sm:block">0{i + 1}</span>
-                  <span className="font-display text-xl sm:text-2xl text-chalk group-hover:text-wire transition-colors duration-200">
+                  <span className="min-w-0 font-display text-xl sm:text-2xl text-chalk group-hover:text-wire transition-colors duration-200 break-words">
                     {p.title}
                   </span>
                 </div>

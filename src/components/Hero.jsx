@@ -20,8 +20,8 @@ export default function Hero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink to-ink pointer-events-none" />
 
-      <div className="relative z-10 grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:gap-20">
-        <div>
+      <div className="relative z-10 grid w-full max-w-6xl min-w-0 items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:gap-20">
+        <div className="min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,11 +41,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-[13vw] sm:text-7xl lg:text-8xl leading-[0.95] text-chalk tracking-tight"
+            className="font-display text-[11vw] sm:text-7xl lg:text-8xl leading-[0.95] text-chalk tracking-tight break-words"
           >
             Dasunika
             <br />
-            <span className="relative inline-block">
+            <span className="relative inline-block max-w-full break-words">
               Kumarawansha
               <motion.span
                 initial={{ scaleX: 0 }}
@@ -145,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-ink border border-inkline px-4 py-2 font-mono text-[11px] text-wire shadow-lg"
+            className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-ink border border-inkline px-3 py-2 font-mono text-[10px] text-wire shadow-lg sm:px-4 sm:text-[11px]"
           >
             SLIIT · IT Undergraduate
           </motion.span>

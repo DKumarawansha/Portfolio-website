@@ -10,9 +10,9 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="bg-ink min-h-screen">
+    <div className="bg-ink min-h-screen overflow-x-hidden">
       <Sidebar />
-      <main className="lg:pl-64">
+      <main className="min-w-0 lg:pl-64">
         <Hero />
         <About />
         <Skills />

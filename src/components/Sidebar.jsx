@@ -35,7 +35,7 @@ export default function Sidebar() {
   return (
     <>
       {/* mobile top bar */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-4 bg-ink/90 backdrop-blur border-b border-inkline lg:hidden">
+      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-4 bg-ink/90 backdrop-blur border-b border-inkline lg:hidden" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
         <span className="font-display text-chalk text-sm tracking-tight">
           DK<span className="text-signal">.</span>
         </span>

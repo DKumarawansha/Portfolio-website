@@ -42,7 +42,7 @@ export default function Contact() {
         >
           <a
             href={`mailto:${profile.email}`}
-            className="font-display text-2xl sm:text-3xl text-signal hover:text-wire transition-colors duration-200 focus-ring rounded"
+            className="min-w-0 max-w-full break-words font-display text-2xl sm:text-3xl text-signal hover:text-wire transition-colors duration-200 focus-ring rounded"
           >
             {profile.email}
           </a>
