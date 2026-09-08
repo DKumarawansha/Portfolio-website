@@ -126,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94, x: 24 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="relative mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none"
+          className="relative mx-auto -translate-y-5 w-full max-w-[300px] lg:mx-0 lg:max-w-none lg:translate-y-0"
         >
           <div className="relative aspect-square overflow-hidden rounded-full border-4 border-paper/90 bg-paper shadow-2xl shadow-black/40">
             <img
@@ -145,6 +145,7 @@ export default function Hero() {
           >
             SLIIT · IT Undergraduate
           </motion.span>
+
         </motion.div>
       </div>
 
