@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center px-6 sm:px-12 lg:px-20 pt-24 lg:pt-0 bg-blueprint bg-grid overflow-hidden"
+      className="relative min-h-[calc(100svh+3rem)] flex flex-col justify-center px-6 sm:px-12 lg:px-20 pt-24 lg:min-h-screen lg:pt-0 bg-blueprint bg-grid overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink to-ink pointer-events-none" />
 
