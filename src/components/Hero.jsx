@@ -128,10 +128,6 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="relative mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none"
         >
-          {/* corner ticks for a technical-drawing feel */}
-          <span className="absolute -top-2 -left-2 h-4 w-4 border-l-2 border-t-2 border-signal" />
-          <span className="absolute -bottom-2 -right-2 h-4 w-4 border-b-2 border-r-2 border-signal" />
-
           <div className="relative aspect-square overflow-hidden rounded-full border-4 border-paper/90 bg-paper shadow-2xl shadow-black/40">
             <img
               src={profilePhoto}
