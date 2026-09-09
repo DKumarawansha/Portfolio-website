@@ -30,7 +30,7 @@ export default function Contact() {
           className="mt-6 max-w-lg text-muted text-base leading-relaxed"
         >
           I'm looking for an entry-level internship in software engineering or product
-          development. Reach out — I reply quickly.
+          development. Reach out - I reply quickly.
         </motion.p>
 
         <motion.div

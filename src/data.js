@@ -123,8 +123,8 @@ export const education = [
 ]
 
 export const activities = [
-  'Active participant, Dance Sense — SLIIT',
-  'Former member, Kalaanethra Society — SLIIT',
+  'Active participant, Dance Sense - SLIIT',
+  'Former member, Kalaanethra Society - SLIIT',
   'Junior Western Band Leader',
   'School Prefect',
   'Member, Environmental Club',
