@@ -10,9 +10,10 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="bg-ink min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden bg-ink text-chalk">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(94,234,212,0.12),transparent_25%),radial-gradient(circle_at_bottom_right,_rgba(255,107,74,0.10),transparent_30%)]" />
       <Sidebar />
-      <main className="min-w-0 lg:pl-64">
+      <main className="relative min-w-0 lg:pl-64">
         <Hero />
         <About />
         <Skills />

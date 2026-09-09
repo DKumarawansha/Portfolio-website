@@ -7,10 +7,13 @@ html {
 }
 
 body {
-  background-color: #0f1420;
+  background:
+    radial-gradient(circle at top, rgba(94, 234, 212, 0.08), transparent 30%),
+    linear-gradient(180deg, #0f1420 0%, #10182a 100%);
   color: #edeff3;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -26,11 +29,17 @@ body {
   background: #0f1420;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a2133;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #1a2133, #2d3a4f);
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #5eead4;
+}
+
+@layer components {
+  .soft-card {
+    @apply rounded-2xl border border-inkline bg-white/5 shadow-[0_20px_50px_rgba(15,20,32,0.35)] backdrop-blur-sm;
+  }
 }
 
 /* respect reduced motion */

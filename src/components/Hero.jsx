@@ -26,14 +26,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center gap-3"
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-inkline bg-ink/50 px-4 py-2 backdrop-blur-sm"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-wire opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-wire" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-wire" />
             </span>
-            <p className="font-mono text-wire text-sm">
-              Malabe, Sri Lanka - open to internships
+            <p className="font-mono text-wire text-xs sm:text-sm">
+              Malabe, Sri Lanka · open to internships
             </p>
           </motion.div>
 
@@ -45,13 +45,13 @@ export default function Hero() {
           >
             Dasunika
             <br />
-            <span className="relative inline-block max-w-full break-words">
+            <span className="relative inline-block max-w-full break-words text-white/90">
               Kumarawansha
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-                className="absolute -bottom-1 left-0 h-[3px] w-full origin-left bg-signal sm:-bottom-2"
+                className="absolute -bottom-1 left-0 h-[3px] w-full origin-left bg-gradient-to-r from-signal via-wire to-signal sm:-bottom-2"
               />
             </span>
           </motion.h1>
@@ -60,16 +60,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-8 flex h-9 items-center gap-3 overflow-hidden"
+            className="mt-8 flex h-10 items-center overflow-hidden"
           >
-            
             <motion.div
               key={roleIndex}
               initial={{ y: 36, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -36, opacity: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="font-display text-2xl sm:text-3xl text-signal"
+              className="rounded-full border border-wire/40 bg-wire/10 px-3 py-1.5 font-display text-lg sm:text-2xl text-signal"
             >
               {profile.roles[roleIndex]}
             </motion.div>
@@ -79,7 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="mt-6 max-w-md text-muted text-base leading-relaxed"
+            className="mt-6 max-w-xl text-muted text-base leading-relaxed sm:text-lg"
           >
             {profile.tagline}
           </motion.p>
@@ -88,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
             <a
               href="#projects"
@@ -96,9 +95,9 @@ export default function Hero() {
                 e.preventDefault()
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="group relative px-6 py-3 bg-signal text-ink font-body font-medium text-sm rounded-sm overflow-hidden transition-colors duration-300 hover:text-signal focus-ring"
+              className="group relative overflow-hidden rounded-full bg-gradient-to-r from-signal to-[#ff8a5b] px-6 py-3 text-sm font-medium text-ink shadow-[0_14px_32px_rgba(255,107,74,0.35)] transition-transform duration-300 hover:-translate-y-0.5 focus-ring"
             >
-              <span className="absolute inset-0 -translate-x-full bg-ink transition-transform duration-300 group-hover:translate-x-0" />
+              <span className="absolute inset-0 bg-white/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <span className="relative">View projects</span>
             </a>
             <a
@@ -107,7 +106,7 @@ export default function Hero() {
                 e.preventDefault()
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="px-6 py-3 border border-inkline text-chalk font-body font-medium text-sm rounded-sm hover:border-wire hover:text-wire transition-colors duration-200 focus-ring"
+              className="rounded-full border border-inkline bg-ink/40 px-6 py-3 text-sm font-medium text-chalk transition-all duration-200 hover:border-wire hover:text-wire focus-ring"
             >
               Get in touch
             </a>
@@ -115,11 +114,19 @@ export default function Hero() {
               href="/CV_Dasunika_Kumarawansha.pdf"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 border border-inkline text-muted font-body font-medium text-sm rounded-sm hover:border-wire hover:text-wire transition-colors duration-200 focus-ring"
+              className="rounded-full border border-inkline bg-transparent px-6 py-3 text-sm font-medium text-muted transition-all duration-200 hover:border-wire hover:text-wire focus-ring"
             >
               View CV ↗
             </a>
           </motion.div>
+
+          <div className="mt-8 flex flex-wrap gap-2 text-xs font-mono text-muted">
+            {['React', 'Node.js', 'Kotlin', 'Figma', 'Mobile', 'UI/UX'].map((item) => (
+              <span key={item} className="rounded-full border border-inkline bg-white/[0.02] px-3 py-1.5">
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
 
         <motion.div
