@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline bg-blueprint bg-grid relative overflow-hidden"
+      className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline bg-blueprint bg-grid relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink pointer-events-none" />
 

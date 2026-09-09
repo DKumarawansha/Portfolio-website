@@ -7,7 +7,7 @@ export default function Projects() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section id="projects" className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline">
+    <section id="projects" className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline">
       <SectionHeading index="03" title="Projects" />
 
       <div className="flex flex-col">

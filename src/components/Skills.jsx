@@ -4,7 +4,7 @@ import { skillGroups, softSkills } from '../data'
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline">
+    <section id="skills" className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline">
       <SectionHeading index="02" title="Skills" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">

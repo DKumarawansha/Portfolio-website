@@ -4,7 +4,7 @@ import { activities, languages } from '../data'
 
 export default function Activities() {
   return (
-    <section id="activities" className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline">
+    <section id="activities" className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline">
       <SectionHeading index="05" title="Beyond the code" />
 
       <div className="grid lg:grid-cols-5 gap-12">

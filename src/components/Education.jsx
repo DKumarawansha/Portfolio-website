@@ -4,7 +4,7 @@ import { education } from '../data'
 
 export default function Education() {
   return (
-    <section id="education" className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline">
+    <section id="education" className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline">
       <SectionHeading index="04" title="Education" />
 
       <div className="flex flex-col">

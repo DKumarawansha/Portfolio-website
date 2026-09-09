@@ -9,7 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="px-6 sm:px-12 lg:px-20 py-28 border-t border-inkline">
+    <section id="about" className="px-6 sm:px-12 lg:px-20 py-14">
       <SectionHeading index="01" title="About" />
 
       <div className="grid lg:grid-cols-5 gap-12">

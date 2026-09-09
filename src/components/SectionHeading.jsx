@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function SectionHeading({ index, title }) {
   return (
-    <div className="flex items-baseline gap-4 mb-14">
+    <div className="flex items-baseline gap-4 mb-6">
       <span className="section-index font-mono text-sm text-signal">{index}</span>
       <motion.h2
         initial={{ opacity: 0, y: 12 }}
