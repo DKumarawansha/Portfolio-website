@@ -17,7 +17,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="font-display text-4xl sm:text-6xl text-chalk tracking-tight mt-6 max-w-2xl"
+          className="font-display text-3xl sm:text-4xl text-chalk tracking-tight mt-6 max-w-2xl"
         >
           Let's build something worth shipping.
         </motion.h2>
