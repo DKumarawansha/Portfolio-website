@@ -4,23 +4,84 @@ import { skillGroups, softSkills } from '../data'
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 sm:px-12 lg:px-20 py-14 border-t border-inkline">
+    <section
+      id="skills"
+      className="
+        border-t border-inkline
+        px-5 py-12
+        sm:px-8 sm:py-14
+        md:px-12
+        lg:px-20 lg:py-16
+      "
+    >
       <SectionHeading index="02" title="Skills" />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
+      {/* Skill Groups */}
+      <div
+        className="
+          grid
+          grid-cols-1
+          gap-4
+          sm:grid-cols-2
+          sm:gap-5
+          lg:grid-cols-3
+          lg:gap-6
+        "
+      >
         {skillGroups.map((group, i) => (
           <motion.div
             key={group.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: i * 0.06 }}
-            className="soft-card p-5 sm:p-6"
+            viewport={{
+              once: true,
+              margin: '-60px',
+            }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.06,
+            }}
+            className="
+              soft-card
+              min-w-0
+              p-4
+              sm:p-5
+              md:p-6
+            "
           >
-            <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-wire mb-4">{group.title}</h3>
-            <ul className="flex flex-col gap-2.5">
+            {/* Group title */}
+            <h3
+              className="
+                mb-4
+                font-mono
+                text-[10px]
+                uppercase
+                tracking-[0.16em]
+                text-wire
+                sm:text-xs
+                sm:tracking-[0.18em]
+              "
+            >
+              {group.title}
+            </h3>
+
+            {/* Skills list */}
+            <ul className="flex flex-col gap-2">
               {group.items.map((item) => (
-                <li key={item} className="border-b border-inkline pb-2.5 text-base font-light text-chalk last:border-b-0">
+                <li
+                  key={item}
+                  className="
+                    border-b
+                    border-inkline
+                    pb-2.5
+                    text-sm
+                    font-light
+                    leading-relaxed
+                    text-chalk
+                    last:border-b-0
+                    sm:text-base
+                  "
+                >
                   {item}
                 </li>
               ))}
@@ -29,18 +90,71 @@ export default function Skills() {
         ))}
       </div>
 
+      {/* Soft Skills */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-16 border-t border-inkline pt-10"
+        initial={{
+          opacity: 0,
+          y: 20,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          margin: '-60px',
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 0.3,
+        }}
+        className="
+          mt-12
+          border-t
+          border-inkline
+          pt-8
+          sm:mt-14
+          sm:pt-10
+          lg:mt-16
+        "
       >
-        <div className="flex flex-wrap gap-3">
+        <div
+          className="
+            mb-5
+            font-mono
+            text-[10px]
+            uppercase
+            tracking-[0.16em]
+            text-muted
+            sm:text-xs
+            sm:tracking-[0.18em]
+          "
+        >
+          Soft Skills
+        </div>
+
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {softSkills.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-inkline bg-white/[0.02] px-4 py-2 font-mono text-xs text-muted"
+              className="
+                rounded-full
+                border
+                border-inkline
+                bg-white/[0.02]
+                px-3
+                py-1.5
+                font-mono
+                text-[10px]
+                text-muted
+                transition-all
+                duration-200
+                hover:border-wire
+                hover:text-wire
+                sm:px-4
+                sm:py-2
+                sm:text-xs
+              "
             >
               {s}
             </span>
