@@ -70,7 +70,7 @@ export default function Hero() {
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-wire" />
             </span>
 
-            <p className="font-mono text-[10px] leading-tight text-wire sm:text-xs md:text-sm">
+            <p className="font-mono text-xs leading-tight text-wire sm:text-xs md:text-sm">
               Malabe, Sri Lanka · open to internships
             </p>
           </motion.div>
@@ -82,14 +82,10 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="
               font-display
-              text-[13vw]
+              text-[clamp(2.5rem,1rem+6vw,3.75rem)]
               leading-[0.92]
               tracking-tight
               text-chalk
-              sm:text-7xl
-              md:text-8xl
-              lg:text-8xl
-              xl:text-9xl
             "
           >
             Dasunika
@@ -165,7 +161,7 @@ export default function Hero() {
             className="
               mt-5 sm:mt-6
               max-w-xl
-              text-sm
+              text-base
               leading-relaxed
               text-muted
               sm:text-base
@@ -280,7 +276,7 @@ export default function Hero() {
               flex flex-wrap
               gap-1.5 sm:gap-2
               font-mono
-              text-[10px]
+              text-xs
               text-muted
               sm:text-xs
             "
@@ -396,12 +392,12 @@ export default function Hero() {
               bg-ink
               px-2.5 py-1.5
               font-mono
-              text-[9px]
+              text-xs
               text-wire
               shadow-lg
               sm:bottom-[-16px]
               sm:px-4 sm:py-2
-              sm:text-[11px]
+              sm:text-xs
             "
           >
             SLIIT · IT Undergraduate
