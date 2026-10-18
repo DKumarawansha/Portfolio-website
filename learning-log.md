@@ -210,3 +210,48 @@ Replaced the hero name's responsive font-size classes with a clamp() value.
 Changed the tagline's base font size to text-base to keep body text at a minimum of 1rem.
 Replaced hardcoded pixel font sizes in the availability badge, skill tags, and image label with Tailwind font-size utilities.
 
+#### Ask — Check my maths, then I check yours
+
+Heading: Kumarawansha
+Root font size: 16px
+Word width: 6.96796875em
+Side padding: 0px on each side
+Fluid font size: clamp(2.5rem, 1rem + 6vw, 3.75rem)
+
+Calculations
+
+Minimum font size: 2.5rem × 16px = 40px
+Preferred font size: 16px + (6 × viewport width / 100)
+Maximum font size: 3.75rem × 16px = 60px
+Word width: 6.96796875 × computed font size
+
+| Viewport | Computed font size | Word width | Available space | Viewport-based overflow |
+|---:|---:|---:|---:|---|
+| 320px | 40px | 278.72px | 320px | No |
+| 393px | 40px | 278.72px | 393px | No |
+| 768px | 60px | 418.08px | 768px | No |
+| 1440px | 60px | 418.08px | 1440px | No |
+
+DevTools verification
+The current computed font size observed in DevTools was 60px, and the measured word width was 418.078125px, equivalent to approximately 6.968em.
+
+Observation
+The word fits within the viewport width in these calculations. However, the actual heading may still wrap if its parent container is narrower than the word. The calculated values should be checked against the browser at 320px and 768px.
+
+What is clamp(2rem, 1rem + 6vw, 5rem) on a 500px-wide screen?
+
+Assumption: Root font size = 16px.
+Minimum: 2rem × 16px = 32px
+Preferred: 1rem + 6vw = 16px + (0.06 × 500px) = 46px
+Maximum: 5rem × 16px = 80px
+Apply clamp(): The preferred value, 46px, is between the minimum (32px) and maximum (80px).
+
+Answer: 46px
+
+The clamp() function keeps the font size between a minimum and maximum while allowing it to scale with the viewport width.
+
+Why is line-height: 1.05 better than line-height: 60px?
+line-height: 1.05 is better because it adjusts automatically when the font size changes, keeping spacing consistent on different screen sizes. line-height: 60px always stays fixed at 60px.
+
+Which unit keeps a paragraph's lines a readable length?
+The ch unit. It measures width based on the “0” character and is useful for limiting paragraph line length, for example max-width: 65ch;
