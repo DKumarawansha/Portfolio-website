@@ -23,8 +23,14 @@ export default function Projects() {
     >
       <SectionHeading index="03" title="Projects" />
 
-      <div className="flex flex-col gap-2.5 sm:gap-3">
-        {projects.map((p, i) => {
+      <div
+        className="
+        grid
+        grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))]
+        gap-4
+      "
+>
+  {projects.map((p, i) => {
           const isOpen = openIndex === i
 
           return (

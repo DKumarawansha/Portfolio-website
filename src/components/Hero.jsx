@@ -48,14 +48,14 @@ export default function Hero() {
         "
       >
         {/* ================= LEFT CONTENT ================= */}
-        <div className="min-w-0">
+        <div className="min-w-0 flex flex-col gap-6">
           {/* Availability badge */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="
-              mb-6
+              mt-7 sm:mt-8
               inline-flex max-w-full
               items-center gap-3
               rounded-full
@@ -159,7 +159,6 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
             className="
-              mt-5 sm:mt-6
               max-w-xl
               text-base
               leading-relaxed
@@ -176,11 +175,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="
-              mt-7 sm:mt-8
-              flex flex-wrap
-              items-center
-              gap-2.5 sm:gap-3
+              className="
+                flex flex-col
+                items-stretch
+                gap-2.5
+                sm:flex-row
+                sm:items-center
+                sm:gap-3
             "
           >
             {/* View Projects */}
@@ -193,7 +194,7 @@ export default function Hero() {
                 rounded-full
                 bg-gradient-to-r
                 from-signal to-[#ff8a5b]
-                px-5 py-2.5
+                min-h-11 w-full px-5
                 text-xs
                 font-medium
                 text-ink
@@ -229,7 +230,7 @@ export default function Hero() {
                 rounded-full
                 border border-inkline
                 bg-ink/40
-                px-5 py-2.5
+                min-h-11 w-full px-5
                 text-xs
                 font-medium
                 text-chalk
@@ -253,7 +254,7 @@ export default function Hero() {
                 rounded-full
                 border border-inkline
                 bg-transparent
-                px-5 py-2.5
+                inline-flex min-h-11 w-full items-center justify-center px-5
                 text-xs
                 font-medium
                 text-muted
@@ -272,7 +273,6 @@ export default function Hero() {
           {/* Skill tags */}
           <div
             className="
-              mt-7 sm:mt-8
               flex flex-wrap
               gap-1.5 sm:gap-2
               font-mono
@@ -382,10 +382,6 @@ export default function Hero() {
               delay: 0.7,
             }}
             className="
-              absolute
-              bottom-2
-              left-1/2
-              -translate-x-1/2
               whitespace-nowrap
               rounded-sm
               border border-inkline

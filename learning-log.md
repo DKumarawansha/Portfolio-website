@@ -14,7 +14,7 @@ I think switching off the CSS rule may fix the issue.However, I need to test it 
 Show the Answer
 Switching off the word-breaking rule does not fix the bug. The word is still wider than the available space, causing horizontal overflow. The real problem is the element's size, which needs to be fixed.
 
-## Lab
+### Lab
 Font-size: 51.09px
 Content width: 353px
 Left padding: 0px
@@ -39,18 +39,18 @@ Original font size: 13vw
 Tested font size: 12vw
 Result: The name fits on two lines at 320px.
 
-## Bug Report: Surname Wrapping Issue
+### Bug Report: Surname Wrapping Issue
 
 Element: The heading element (h1) displaying my name and surname.
 
 Measurements:
-- Viewport tested: 320px–480px
-- Content width at 393px viewport: 353px
-- Left padding: 0px
-- Right padding: 0px
-- Original font size: 13vw
-- Tested font size: 12vw
-- At 320px viewport width, the name fits on two lines with 12vw.
+Viewport tested: 320px–480px
+Content width at 393px viewport: 353px
+Left padding: 0px
+Right padding: 0px
+Original font size: 13vw
+Tested font size: 12vw
+At 320px viewport width, the name fits on two lines with 12vw.
 
 Cause: The responsive font size of 13vw makes the name too large for narrow mobile screens, causing incorrect line wrapping.
 
@@ -137,7 +137,7 @@ A visitor with low vision sets their browser's default text size to 24px. Three 
 
 Only 3.5rem, which becomes 84px. A px value never changes, and vw follows the window's width, not the reader's settings. This is why fluid type mixes rem with vw instead of using vw alone.
 
-## clamp() gives a size a floor, a slope and a ceiling
+### clamp() gives a size a floor, a slope and a ceiling
 
 clamp(minimum, preferred, maximum)` creates a responsive size.
 
@@ -159,7 +159,7 @@ s.remove();
 
 Word width = 6.9678955078125em
 
-## Measure my word
+### Measure my word
 
 The measured width of Kumarawansha is 6.9678955078125em.
 
@@ -174,7 +174,7 @@ Largest font size = (320 - left padding - right padding) / word width in em
 
 The largest font size that fits within 320px is approximately 45.93px, assuming the full 320px is available for the word.
 
-## Responsive Testing Results
+### Responsive Testing Results
 
 I tested my portfolio at all seven viewport widths after applying the CSS clamp() function to the main heading.
 
@@ -187,12 +187,12 @@ I tested my portfolio at all seven viewport widths after applying the CSS clamp(
 1440px: The email address in the Contact section wraps onto two lines.
 The main heading works well at most tested widths. Further investigation is needed at 1024px and 1440px to identify and fix the remaining layout issues.
 
-## After changing settings
+### After changing settings
 With Chrome's font size set to Very large, I rechecked the portfolio at 320px and 393px. The surname “Kumarawansha” wrapped onto two lines, and there were also some issues in the Activities and Contact sections, including the email wrapping onto two lines.
 
 The trade-off I chose is to allow the text to wrap when the browser font size is very large, because maintaining readable text is more important than forcing everything to stay on one line.
 
-## After changing hero name
+### After changing hero name
 
 Screen-size testing results
 
@@ -210,7 +210,7 @@ Replaced the hero name's responsive font-size classes with a clamp() value.
 Changed the tagline's base font size to text-base to keep body text at a minimum of 1rem.
 Replaced hardcoded pixel font sizes in the availability badge, skill tags, and image label with Tailwind font-size utilities.
 
-#### Ask — Check my maths, then I check yours
+### Ask — Check my maths, then I check yours
 
 Heading: Kumarawansha
 Root font size: 16px
@@ -255,3 +255,88 @@ line-height: 1.05 is better because it adjusts automatically when the font size 
 
 Which unit keeps a paragraph's lines a readable length?
 The ch unit. It measures width based on the “0” character and is useful for limiting paragraph line length, for example max-width: 65ch;
+
+## Day 4
+### Predict first
+Three buttons sit in a flex row with flex-wrap: wrap. The screen narrows until only two fit. Where does the third go, and how wide is it?
+
+When three buttons are in a flex row with flex-wrap: wrap and the screen becomes narrower, the third button moves to the next row when there is not enough space.
+
+show the answer
+Onto a new row, at its own content width, aligned to the start. That is the lonely "View CV" in the screenshot. Flexbox did what it was told. Nobody had decided what should happen when three don't fit.
+
+Flexbox
+Flexbox is used for one-dimensional layouts (a row or a column).
+Items take their size from their content and can share available space.
+Use it for buttons, chips, and navigation links.
+
+Grid
+CSS Grid is used for two-dimensional layouts (rows and columns).
+We define rows and columns, and items are placed into the grid.
+Use it for card galleries and page layouts.
+
+Flexbox is best for arranging items in one direction, while Grid is best for arranging items in rows and columns together.
+
+### Lab 04
+### Flexbox Froggy — Levels 1–24
+Completed Flexbox Froggy levels 1–24.
+Practiced aligning items horizontally and vertically using CSS Flexbox.
+Learned how justify-content and align-items control item alignment.
+Practiced using flex-direction, flex-wrap, and align-content to arrange items.
+
+Improved my understanding of responsive layouts by solving CSS challenges.
+justify-content
+flex-start: Items align to the left side of the container.
+flex-end: Items align to the right side of the container.
+center: Items align at the center of the container.
+space-between: Items display with equal spacing between them.
+space-around: Items display with equal spacing around them.
+
+align-items
+flex-start: Items align to the top of the container.
+flex-end: Items align to the bottom of the container.
+center: Items align at the vertical center of the container.
+baseline: Items display at the baseline of the container.
+stretch: Items are stretched to fit the container.
+
+flex-direction
+row: Items are placed the same as the text direction.
+row-reverse: Items are placed opposite to the text direction.
+column: Items are placed top to bottom.
+column-reverse: Items are placed bottom to top.
+
+flex-wrap
+nowrap: Every item is fit to a single line.
+wrap: Items wrap around to additional lines.
+wrap-reverse: Items wrap around to additional lines in reverse.
+
+align-content
+flex-start: Lines are packed at the top of the container.
+flex-end: Lines are packed at the bottom of the container.
+center: Lines are packed at the vertical center of the container.
+space-between: Lines display with equal spacing between them.
+space-around: Lines display with equal spacing around them.
+stretch: Lines are stretched to fit the container.
+
+### Badge and underline overlap
+I inspected the badge and underline using Chrome DevTools.
+Cause of overlap: position: absolute
+
+### Auto-fit Project Grid
+Replaced the projects list layout with a responsive auto-fit grid.
+Used grid, auto-fit, and minmax(min(100%, 18rem), 1fr) to arrange project cards automatically.
+Used gap-4 to keep consistent spacing between cards.
+Removed responsive column-count media queries: 0, because none were present in the original outer projects list.
+Kept the prefers-reduced-motion media query because it supports accessibility.
+Tested at 320px, 393px, 768px, 1024px and 1440px to check the layout at different screen sizes.But 1024px and 1440px UI is not user friendly.
+
+Auto-fit adjusts the number of columns based on the available space, reducing the need for breakpoint-specific column rules.
+
+### Grid Garden — Levels 1–28
+Completed Grid Garden levels 1–28.
+Practiced CSS Grid line positioning and placing items in the correct rows and columns.
+Learned how grid properties control the position and size of items.
+Practiced solving layout challenges by writing CSS.
+
+
+
