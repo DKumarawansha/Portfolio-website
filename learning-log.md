@@ -338,5 +338,36 @@ Practiced CSS Grid line positioning and placing items in the correct rows and co
 Learned how grid properties control the position and size of items.
 Practiced solving layout challenges by writing CSS.
 
+## Day 05
+### Predict first 
+A hero has height: 100vh. On iPhone Safari, the buttons at the bottom are hidden when the page first loads. Why?
 
+100vh may include the area behind Safari's browser bars on an iPhone. When Safari's address bar and bottom toolbar are visible, the actual visible screen height can be smaller, so the buttons at the bottom may be hidden.
+
+Show the answer
+On phones, 100vh is measured with the browser's toolbars tucked away, which is the tallest the viewport ever gets. On first load the toolbars are showing, so the bottom strip of the hero sits underneath them.
+
+svh - small viewport height.
+dvh - dynamic viewport height.
+100dvh - changes as the browser toolbars show or hide.
+min-height - 100svh gives a hero a stable minimum height based on the small viewport.
+
+### lab 05
+Before Fix 
+Home: 40px height, 207px width
+About: 40px height, 207px width
+Skills: 40px height, 207px width
+Projects: 40px height, 207px width
+Education: 40px height, 207px widt
+Activities: 40px height, 207px width
+Contact: 40px height, 207px width
+Menu button: 1.5px height, 24px width (need to recheck the outer button)
+Email: 25px height, 353px width
+LinkedIn: 20px height, 85.86px width
+GitHub: 20px height, 69.06px width
+
+Mobile tap targets need enough space to be easy to tap.
+Tailwind's min-h-11 and min-w-11 utilities set minimum dimensions of 44px.
+inline-flex items-center helps make links easier to tap while vertically aligning their content.
+I should inspect the complete clickable element in DevTools rather than measuring only its text or icon.
 

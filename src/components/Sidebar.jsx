@@ -1,141 +1,538 @@
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { sections, profile } from '../data'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { profile } from '../data'
 
-export default function Sidebar() {
-  const [active, setActive] = useState('home')
-  const [open, setOpen] = useState(false)
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id)
-          }
-        })
-      },
-      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
-    )
+  const [status, setStatus] = useState('')
+  const [loading, setLoading] = useState(false)
 
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id)
-      if (el) observer.observe(el)
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     })
+  }
 
-    return () => observer.disconnect()
-  }, [])
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setStatus('')
 
-  const goTo = (id) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-    setOpen(false)
+    try {
+      const res = await fetch(
+        'https://backend-worker.dasukumarawansha.workers.dev/api/contact',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      )
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setStatus('✅ Message sent successfully!')
+
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        })
+      } else {
+        setStatus(data.message || '❌ Failed to send message.')
+      }
+    } catch (error) {
+      setStatus('❌ Backend connection failed.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <>
-      {/* mobile top bar */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 py-4 bg-ink/90 backdrop-blur border-b border-inkline lg:hidden" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
-        <span className="font-display text-chalk text-sm tracking-tight">
-          DK<span className="text-signal">.</span>
-        </span>
-        <button
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((o) => !o)}
-          className="w-9 h-9 flex flex-col justify-center items-center gap-1.5 focus-ring rounded"
+    <section
+      id="contact"
+      className="
+        relative
+        overflow-hidden
+        border-t border-inkline
+        bg-blueprint bg-grid
+        px-5 py-12
+        sm:px-8 sm:py-14
+        md:px-12 md:py-16
+        lg:px-20 lg:py-20
+        xl:px-24
+      "
+    >
+      {/* Background overlay */}
+      <div
+        className="
+          pointer-events-none
+          absolute inset-0
+          bg-gradient-to-t
+          from-ink
+          via-ink/70
+          to-ink/90
+        "
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl">
+        {/* Section index */}
+        <span
+          className="
+            section-index
+            font-mono
+            text-xs
+            text-signal
+            sm:text-sm
+          "
         >
-          <motion.span
-            animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }}
-            className="w-6 h-[1.5px] bg-chalk block"
-          />
-          <motion.span
-            animate={{ opacity: open ? 0 : 1 }}
-            className="w-6 h-[1.5px] bg-chalk block"
-          />
-          <motion.span
-            animate={{ rotate: open ? -45 : 0, y: open ? -6 : 0 }}
-            className="w-6 h-[1.5px] bg-chalk block"
-          />
-        </button>
-      </div>
+          06 / Contact
+        </span>
 
-      {/* mobile drawer */}
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 left-0 bottom-0 z-30 w-64 bg-ink border-r border-inkline pt-20 px-6 lg:hidden"
+        {/* Heading */}
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: '-80px',
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="
+            mt-4
+            max-w-2xl
+            font-display
+            text-3xl
+            leading-[1.08]
+            tracking-tight
+            text-chalk
+            sm:mt-6
+            sm:text-4xl
+            md:text-5xl
+          "
+        >
+          Let's build something worth shipping.
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: '-80px',
+          }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+          className="
+            mt-5
+            max-w-xl
+            text-sm
+            leading-7
+            text-muted
+            sm:mt-6
+            sm:text-base
+          "
+        >
+          I'm looking for an entry-level internship in software engineering or
+          product development. Reach out - I reply quickly.
+        </motion.p>
+
+        {/* Contact content */}
+        <div
+          className="
+            mt-10
+            grid
+            grid-cols-1
+            gap-10
+            sm:mt-12
+            md:gap-12
+            lg:grid-cols-2
+            lg:gap-16
+            xl:gap-24
+          "
+        >
+          {/* ================= CONTACT FORM ================= */}
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="
+              flex
+              w-full
+              flex-col
+              gap-3.5
+              sm:gap-5
+            "
           >
-            <ul className="flex flex-col gap-1">
-              {sections.map((s, i) => (
-                <li key={s.id}>
-                  <button
-                    onClick={() => goTo(s.id)}
-                    className={`w-full text-left py-2.5 font-mono text-sm flex items-center gap-3 focus-ring rounded ${
-                      active === s.id ? 'text-signal' : 'text-muted'
-                    }`}
-                  >
-                    <span className="text-xs opacity-60">0{i + 1}</span>
-                    {s.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+            {/* Name */}
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="contact-name"
+                className="
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.15em]
+                  text-muted
+                  sm:text-xs
+                "
+              >
+                Name
+              </label>
 
-      {/* desktop sidebar */}
-      <aside className="hidden lg:flex fixed top-0 left-0 h-screen w-64 flex-col justify-between border-r border-inkline px-8 py-10 z-30 bg-ink">
-        <div>
-          <button
-            onClick={() => goTo('home')}
-            className="font-display text-2xl text-chalk tracking-tight focus-ring rounded"
+              <input
+                id="contact-name"
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                autoComplete="name"
+                className="
+                  w-full
+                  min-h-[48px]
+                  rounded-lg
+                  border border-inkline
+                  bg-ink/40
+                  px-4 py-3
+                  text-base
+                  text-chalk
+                  placeholder:text-muted
+                  outline-none
+                  transition
+                  focus:border-signal
+                  focus:ring-1
+                  focus:ring-signal/30
+                  sm:text-sm
+                "
+              />
+            </div>
+
+            {/* Email */}
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="contact-email"
+                className="
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.15em]
+                  text-muted
+                  sm:text-xs
+                "
+              >
+                Email
+              </label>
+
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                autoComplete="email"
+                className="
+                  w-full
+                  min-h-[48px]
+                  rounded-lg
+                  border border-inkline
+                  bg-ink/40
+                  px-4 py-3
+                  text-base
+                  text-chalk
+                  placeholder:text-muted
+                  outline-none
+                  transition
+                  focus:border-signal
+                  focus:ring-1
+                  focus:ring-signal/30
+                  sm:text-sm
+                "
+              />
+            </div>
+
+            {/* Message */}
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="contact-message"
+                className="
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.15em]
+                  text-muted
+                  sm:text-xs
+                "
+              >
+                Message
+              </label>
+
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Your Message"
+                rows="6"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="
+                  min-h-[150px]
+                  w-full
+                  resize-y
+                  rounded-lg
+                  border border-inkline
+                  bg-ink/40
+                  px-4 py-3
+                  text-base
+                  leading-relaxed
+                  text-chalk
+                  placeholder:text-muted
+                  outline-none
+                  transition
+                  focus:border-signal
+                  focus:ring-1
+                  focus:ring-signal/30
+                  sm:text-sm
+                "
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="
+                mt-1
+                min-h-[48px]
+                w-full
+                rounded-lg
+                bg-signal
+                px-5 py-3
+                text-sm
+                font-semibold
+                text-ink
+                transition
+                duration-200
+                hover:opacity-90
+                focus:outline-none
+                focus:ring-2
+                focus:ring-signal
+                focus:ring-offset-2
+                focus:ring-offset-ink
+                disabled:cursor-not-allowed
+                disabled:opacity-50
+                sm:w-auto
+                sm:self-start
+              "
+            >
+              {loading ? 'Sending...' : 'Send Message'}
+            </button>
+
+            {/* Status */}
+            {status && (
+              <p
+                aria-live="polite"
+                className="
+                  max-w-full
+                  break-words
+                  font-mono
+                  text-xs
+                  leading-6
+                  text-muted
+                  sm:text-sm
+                "
+              >
+                {status}
+              </p>
+            )}
+          </motion.form>
+
+          {/* ================= CONTACT INFO ================= */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+            }}
+            className="
+              flex
+              min-w-0
+              flex-col
+              gap-8
+              lg:justify-between
+              lg:gap-12
+            "
           >
-            Dasunika<span className="text-signal">.</span>
-          </button>
-          <p className="mt-1.5 text-xs text-muted font-mono">IT Undergraduate, SLIIT</p>
-        </div>
+            {/* Email */}
+            <div>
+              <p
+                className="
+                  mb-3
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.15em]
+                  text-muted
+                  sm:text-xs
+                "
+              >
+                Email
+              </p>
 
-        <nav>
-          <ul className="relative flex flex-col gap-1 border-l border-inkline">
-            {sections.map((s, i) => (
-              <li key={s.id} className="relative pl-6 py-2.5">
-                {active === s.id && (
-                  <motion.span
-                    layoutId="active-dot"
-                    className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-[9px] h-[9px] rounded-full bg-signal"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-                {active !== s.id && (
-                  <span className="absolute -left-[3.5px] top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full bg-inkline" />
-                )}
-                <button
-                  onClick={() => goTo(s.id)}
-                  className={`font-mono text-sm transition-colors duration-200 focus-ring rounded ${
-                    active === s.id ? 'text-chalk' : 'text-muted hover:text-wire'
-                  }`}
+              <a
+                href={`mailto:${profile.email}`}
+                className="
+                  block
+                  min-w-0
+                  max-w-full
+                  break-words
+                  font-display
+                  text-xl
+                  leading-tight
+                  text-signal
+                  transition-colors
+                  duration-200
+                  hover:text-wire
+                  focus-ring
+                  rounded
+                  sm:text-2xl
+                  md:text-3xl
+                "
+              >
+                {profile.email}
+              </a>
+            </div>
+
+            {/* Contact links */}
+            <div>
+              <p
+                className="
+                  mb-4
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.15em]
+                  text-muted
+                  sm:text-xs
+                "
+              >
+                Connect
+              </p>
+
+              <div className="flex flex-col gap-4 font-mono text-sm">
+                {/* Phone */}
+                <a
+                  href={`tel:+94${profile.phone.slice(1)}`}
+                  className="
+                    w-fit
+                    max-w-full
+                    break-words
+                    text-muted
+                    transition-colors
+                    hover:text-wire
+                    focus-ring
+                    rounded
+                  "
                 >
-                  {s.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  {profile.phone}
+                </a>
 
-        <div className="flex flex-col gap-2 text-xs font-mono text-muted">
-          <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-wire focus-ring rounded">
-            GitHub ↗
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-wire focus-ring rounded">
-            LinkedIn ↗
-          </a>
+                {/* LinkedIn */}
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+  inline-flex
+  min-h-11
+  min-w-11
+  w-fit
+  items-center
+  text-muted
+  transition-colors
+  hover:text-wire
+  focus-ring
+  rounded
+"
+                >
+                  LinkedIn ↗
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href={profile.github}
+  target="_blank"
+  rel="noreferrer"
+  className="
+    inline-flex
+    min-h-11
+    min-w-11
+    w-fit
+    items-center
+    text-muted
+    transition-colors
+    hover:text-wire
+    focus-ring
+    rounded
+  "
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </aside>
-    </>
+      </div>
+    </section>
   )
 }

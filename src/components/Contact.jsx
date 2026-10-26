@@ -493,7 +493,11 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                   className="
+                    inline-flex
+                    min-h-11
+                    min-w-11
                     w-fit
+                    items-center
                     text-muted
                     transition-colors
                     hover:text-wire
@@ -507,16 +511,20 @@ export default function Contact() {
                 {/* GitHub */}
                 <a
                   href={profile.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="
-                    w-fit
-                    text-muted
-                    transition-colors
-                    hover:text-wire
-                    focus-ring
-                    rounded
-                  "
+  target="_blank"
+  rel="noreferrer"
+  className="
+    inline-flex
+    min-h-11
+    min-w-11
+    w-fit
+    items-center
+    text-muted
+    transition-colors
+    hover:text-wire
+    focus-ring
+    rounded
+  "
                 >
                   GitHub ↗
                 </a>
