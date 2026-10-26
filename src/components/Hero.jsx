@@ -82,20 +82,16 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="
               font-display
-              text-[13vw]
+              text-[clamp(2.25rem,5.8vw,6rem)]
               leading-[0.92]
               tracking-tight
               text-chalk
-              sm:text-7xl
-              md:text-8xl
-              lg:text-8xl
-              xl:text-9xl
             "
           >
             Dasunika
             <br />
 
-            <span className="relative inline-block max-w-full break-words text-white/90">
+            <span className="relative inline-block whitespace-nowrap text-white/90">
               Kumarawansha
 
               <motion.span
